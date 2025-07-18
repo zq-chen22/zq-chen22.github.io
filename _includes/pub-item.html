@@ -1,0 +1,16 @@
+<ul class="pub-list"><li>
+    <a href="{{ include.post.paperurl | default: include.post.url }}">
+      {{ include.post.title | escape }}
+    </a>.  
+    {{ include.post.authors | markdownify }}. {{ include.post.venue }}, {{ include.post.year }}.
+    {% if include.post.bibtex %}
+      [<a href="#" onclick="toggleBib('{{ include.post.slug }}');return false;">bib</a>]
+    {% endif %}
+    {% if include.post.github %}[<a href="{{ include.post.github }}">github</a>]{% endif %}
+    {% if include.post.codeurl %}[<a href="{{ include.post.codeurl }}">code</a>]{% endif %}
+  </li></ul>
+  
+  {% if include.post.bibtex %}
+  <pre id="bib-{{ include.post.slug }}" style="display:none;">{{ include.post.bibtex }}</pre>
+  
+  {% endif %}
